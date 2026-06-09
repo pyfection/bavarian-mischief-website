@@ -1,0 +1,14 @@
+# dev/preview artifacts
+screenshots/
+uploads/
+.thumbnail
+
+# editor-only scaffold (not loaded by index.html)
+tweaks-panel.jsx
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/

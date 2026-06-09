@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bavarian Mischief — Game &amp; Film Studio</title>
+<link rel="icon" type="image/png" href="assets/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Space+Mono:wght@400;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="life.jsx"></script>
+<script type="text/babel" src="sections.jsx"></script>
+
+<script type="text/babel">
+const TWEAKS = {
+  heroVariant: "classic",
+  palette: "dark",
+  accent: "green",
+  motion: true,
+};
+
+const ACCENTS = {
+  green:  { accent: "#6a9a4f", deep: "#34522c", soft: "#8db872" },
+  amber:  { accent: "#e8a23a", deep: "#c47f24", soft: "#f0bd6a" },
+  loden:  { accent: "#4f7a8a", deep: "#2c4a55", soft: "#7fa9b6" },
+};
+
+function App() {
+  const { Nav, Hero, Teem, Films, Studio, Follow, Footer, useReveal } = window.BM;
+  useReveal();
+
+  React.useEffect(() => {
+    document.documentElement.dataset.palette = TWEAKS.palette;
+    document.documentElement.dataset.motion = TWEAKS.motion ? "on" : "off";
+    const a = ACCENTS[TWEAKS.accent] || ACCENTS.green;
+    const r = document.documentElement.style;
+    r.setProperty("--green", a.accent);
+    r.setProperty("--green-deep", a.deep);
+    r.setProperty("--green-soft", a.soft);
+  }, []);
+
+  const a = ACCENTS[TWEAKS.accent] || ACCENTS.green;
+
+  return (
+    <React.Fragment>
+      <Nav />
+      <Hero variant={TWEAKS.heroVariant} />
+      <Teem accent={a.accent} alt={TWEAKS.accent === "amber" ? "#6a9a4f" : "#e8a23a"} />
+      <Films />
+      <Studio />
+      <Follow />
+      <Footer />
+    </React.Fragment>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
