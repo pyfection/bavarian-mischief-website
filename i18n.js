@@ -24,7 +24,7 @@
           "✦ <b>Teem</b> — out now on browser &amp; mobile",
           "✦ Animated Bavarian tales — <b>in the workshop</b>",
           "✦ Strategy games with a mischievous streak",
-          "✦ Bavarian storybooks — <b>in the workshop</b>",
+          "✦ Bavarian novels — <b>in the workshop</b>",
           "✦ Made in the foothills, <b>with some Bavarian mischief</b>",
         ],
       },
@@ -71,7 +71,7 @@
       studio: {
         eyebrow: "The studio",
         title_html: "Made with some<br/><span class=\"am\">Bavarian mischief</span>",
-        para1_html: "We're a pint-sized independent studio making <strong>strategy games</strong>, <strong>animated films</strong> and <strong>storybooks</strong> from the foothills of the Alps. We like ideas that look simple on the surface and unfold into something deeper the longer you stay.",
+        para1_html: "We're a pint-sized independent studio making <strong>strategy games</strong>, <strong>animated films</strong> and <strong>novels</strong> from the foothills of the Alps. We like ideas that look simple on the surface and unfold into something deeper the longer you stay.",
         para2_html: "Games are where we play with systems; films and books are where we tell them. All three carry the same streak of <strong>warm, curious mischief</strong> — and a soft spot for the place and the language we come from.",
         values: [
           { t: "Small & scrappy", d: "A tiny team that ships real things, not roadmaps." },
@@ -113,14 +113,14 @@
           "✦ <b>Teem</b> — jetzt im Browser und auf dem Handy",
           "✦ Animierte bayerische Geschichten — <b>in der Werkstatt</b>",
           "✦ Strategiespiele mit Schabernack",
-          "✦ Bayerische Bilderbücher — <b>in der Werkstatt</b>",
+          "✦ Bayerische Romane — <b>in der Werkstatt</b>",
           "✦ Aus den Voralpen, <b>mit etwas bayerischem Schabernack</b>",
         ],
       },
       teem: {
         pills: { live: "Jetzt live", browser: "Browser", mobile: "Handy", strategy: "Strategie" },
         eyebrow: "Unser erstes Spiel",
-        desc: "Ein Strategiespiel im Westentaschenformat, in dem du Kolonien lebender Zellen heranziehst. Inspiriert von der Mathematik von Conways „Game of Life" — jeder Zug zieht Kreise, und das Gitter ist immer nur einen Atemzug vom Chaos entfernt.",
+        desc: "Ein Strategiespiel im Westentaschenformat, in dem du Kolonien lebender Zellen heranziehst. Inspiriert von der Mathematik von Conways „Game of Life“ — jeder Zug zieht Kreise, und das Gitter ist immer nur einen Atemzug vom Chaos entfernt.",
         feats: [
           "Pflanze, beschneide und lenke selbstorganisierende Zellkolonien.",
           "Tägliche Rätselfelder und ein endloser Sandkasten.",
@@ -160,7 +160,7 @@
       studio: {
         eyebrow: "Das Studio",
         title_html: "Gemacht mit etwas<br/><span class=\"am\">bayerischem Schabernack</span>",
-        para1_html: "Wir sind ein winziges, unabhängiges Studio aus den Voralpen und machen <strong>Strategiespiele</strong>, <strong>Animationsfilme</strong> und <strong>Bilderbücher</strong>. Wir mögen Ideen, die an der Oberfläche schlicht wirken und beim Bleiben tiefer werden.",
+        para1_html: "Wir sind ein winziges, unabhängiges Studio aus den Voralpen und machen <strong>Strategiespiele</strong>, <strong>Animationsfilme</strong> und <strong>Romane</strong>. Wir mögen Ideen, die an der Oberfläche schlicht wirken und beim Bleiben tiefer werden.",
         para2_html: "In Spielen spielen wir mit Systemen; in Filmen und Büchern erzählen wir sie. Alle drei tragen denselben Zug von <strong>warmem, neugierigem Schabernack</strong> — und ein Faible für den Ort und die Sprache, aus der wir kommen.",
         values: [
           { t: "Klein und beherzt", d: "Ein winziges Team, das echte Dinge liefert, keine Roadmaps." },
@@ -202,7 +202,7 @@
           "✦ <b>Teem</b> — ya disponible en navegador y móvil",
           "✦ Cuentos animados en bávaro — <b>en el taller</b>",
           "✦ Juegos de estrategia con un toque travieso",
-          "✦ Libros ilustrados bávaros — <b>en el taller</b>",
+          "✦ Novelas bávaras — <b>en el taller</b>",
           "✦ Hecho a los pies de los Alpes, <b>con travesura bávara</b>",
         ],
       },
@@ -249,7 +249,7 @@
       studio: {
         eyebrow: "El estudio",
         title_html: "Hecho con algo de<br/><span class=\"am\">travesura bávara</span>",
-        para1_html: "Somos un estudio independiente diminuto, a los pies de los Alpes, que hace <strong>juegos de estrategia</strong>, <strong>películas animadas</strong> y <strong>libros ilustrados</strong>. Nos gustan las ideas que parecen simples por fuera y se vuelven más profundas cuanto más te quedas.",
+        para1_html: "Somos un estudio independiente diminuto, a los pies de los Alpes, que hace <strong>juegos de estrategia</strong>, <strong>películas animadas</strong> y <strong>novelas</strong>. Nos gustan las ideas que parecen simples por fuera y se vuelven más profundas cuanto más te quedas.",
         para2_html: "Los juegos son donde jugamos con los sistemas; las películas y los libros, donde los contamos. Los tres llevan la misma chispa de <strong>travesura cálida y curiosa</strong> — y debilidad por el lugar y la lengua de los que venimos.",
         values: [
           { t: "Pequeños y resueltos", d: "Un equipo diminuto que entrega cosas reales, no hojas de ruta." },
@@ -273,6 +273,42 @@
       footer: {
         copyright: "© 2026 Bavarian Mischief",
         made: "hecho con algo de travesura ✦",
+      },
+    },
+
+    /* Bavarian — being filled in section by section with the author.
+     * Missing keys fall back to English. Not yet shown in the switcher. */
+    bar: {
+      doc: { title: "Bavarian Mischief — Indie Studio" },
+      nav: { games: "Cbui", films: "Fuim", books: "Biaha", studio: "Cdudio", follow: "Kim mid ✦" },
+      hero: {
+        sub: "A indi cdudio aus de Boaricn foaoipm — mia máha cbui, fuim und biaha fia de naigiarign, mit a bisal a Boaricn gaude.",
+        ctaPlay: "▶ Cbui Teem",
+        ctaSee: "Cau vós brodld",
+        splitLabel: "Iadsa dsum cbuin",
+        splitDesc: "A ctrategi cbui mid lebendign zein fia'n brausa und's hendi. Lás kolonin vágsn, ibalist's gita.",
+        splitCta: "▶ Cbui um sunst",
+        scroll: "Óbe",
+        ticker_html: [
+          "✦ <b>Teem</b> — iads im brausa und af'm hendi",
+          "✦ Animiade boarice gcihdn — <b>in da veakcdód</b>",
+          "✦ Ctrategi cbui mid a sakricn gaude",
+          "✦ Boarice biaha — <b>in da veakcdód</b>",
+          "✦ Gmahd in de foaoipm, <b>mid am dutal boaricn gcbas</b>",
+        ],
+      },
+      teem: {
+        pills: { live: "Iads live", browser: "Brausa", mobile: "Hendi", strategy: "Ctrategi" },
+        eyebrow: "Unsa easds cbui",
+        desc: "A hándlihs ctrategi cbui, vo'sd kolonin fo lebendige zein afdsiagsd. Insbiriad fo da matematig fo'm Conway sein \"Game of Life\" — iéda dsug dsiagd seine ring, und es gita is óivai blos an átmdsuag veg fom kaos.",
+        feats: [
+          "Bflands, cnaid und lenk seibsdoaganisiade zeikolonin.",
+          "An iédn dóg naie rédsl und a endlose sándkisdn.",
+          "Mid oam dama dsum cbuin — ivaroi, nix instalian.",
+        ],
+        ctaPlay: "▶ Im brausa cbuin",
+        ctaMobile: "Af's hendi hoin",
+        comingSoon: "Kumd bóid",
       },
     },
   };
