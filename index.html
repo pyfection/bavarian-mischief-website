@@ -35,7 +35,7 @@ const ACCENTS = {
 };
 
 function App() {
-  const { Nav, Hero, Teem, Films, Studio, Follow, Footer, useReveal } = window.BM;
+  const { Nav, Hero, Teem, Films, Books, Studio, Follow, Footer, useReveal } = window.BM;
   useReveal();
 
   React.useEffect(() => {
@@ -56,6 +56,7 @@ function App() {
       <Hero variant={TWEAKS.heroVariant} />
       <Teem accent={a.accent} alt={TWEAKS.accent === "amber" ? "#6a9a4f" : "#e8a23a"} />
       <Films />
+      <Books />
       <Studio />
       <Follow />
       <Footer />

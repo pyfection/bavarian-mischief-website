@@ -427,6 +427,42 @@ section { position: relative; }
 .film-card p { color: var(--cream-faint); font-size: 15px; }
 
 /* =====================================================================
+   BOOKS
+   ===================================================================== */
+.books {
+  background:
+    radial-gradient(900px 500px at 15% -10%, color-mix(in srgb, var(--amber) 18%, transparent), transparent 60%),
+    var(--ink-2);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.books-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; }
+@media (max-width: 920px) { .books-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+.books-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; flex-wrap: wrap; }
+.books-title { font-family: var(--font-hand); font-weight: 400; font-size: clamp(56px, 8vw, 104px); line-height: .85; color: var(--cream); }
+.books-byline {
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--amber); margin-top: 10px;
+}
+.books-desc { margin-top: 18px; color: var(--cream-dim); max-width: 540px; line-height: 1.6; }
+.books-tag { margin-top: 22px; max-width: 540px; }
+.books-tag em { font-style: italic; color: var(--green-soft); font-size: 17px; }
+.books-cta { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 30px; }
+
+.book-cover-wrap {
+  display: flex; justify-content: center; align-items: center;
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,.55)) drop-shadow(0 8px 20px rgba(0,0,0,.4));
+}
+.book-cover {
+  max-width: 100%; max-height: 720px; height: auto;
+  border-radius: 4px;
+  transform: rotate(-1.8deg);
+  transition: transform .45s var(--ease);
+}
+.book-cover:hover { transform: rotate(0) scale(1.02); }
+
+/* =====================================================================
    STUDIO
    ===================================================================== */
 .studio { background: var(--ink); }

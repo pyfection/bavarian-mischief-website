@@ -34,7 +34,7 @@ function Nav() {
       <div className="nav-links">
         <a href="#teem">Games</a>
         <a href="#films">Films</a>
-        <a href="#" className="is-soon" onClick={(e)=>e.preventDefault()} aria-disabled="true" title="Coming soon">Books</a>
+        <a href="#books">Books</a>
         <a href="#studio">Studio</a>
         <a className="navcta" href="#follow">Follow ✦</a>
       </div>
@@ -166,6 +166,37 @@ function Films() {
   );
 }
 
+/* ---------------- BOOKS ---------------- */
+function Books() {
+  return (
+    <section className="books section-pad" id="books" data-screen-label="Books">
+      <div className="wrap books-grid">
+        <div className="reveal">
+          <div className="books-meta">
+            <span className="pill">Historical fiction</span>
+            <span className="pill">Coming of age</span>
+            <span className="pill">476 AD</span>
+          </div>
+          <div className="eyebrow">Our first book</div>
+          <h2 className="books-title">Paiuvaria</h2>
+          <div className="books-byline">by Matthias Schreiber</div>
+          <p className="books-desc">The Western Roman Empire is breaking apart along the Danube frontier — where a crumbling fortress, shifting loyalties, and rumours of war make survival a daily bargain. Cassius is only a boy, but he's old enough to see that Rome's laws no longer reach its edges, and that faith — old and new — can unite a town or tear it in two.</p>
+          <p className="books-desc">When violence finally spills over, Cassius is swept from the only home he has ever known and thrust into a dangerous journey through borderlands ruled by hunger, politics, and the sword. Taken under the protection of Severinus, a wandering holy man with a startling reputation, Cassius is drawn into a struggle far larger than any battlefield: keeping frightened people alive, holding a community together as it fractures, and choosing mercy when fear demands cruelty.</p>
+          <p className="books-desc">As winter closes in and enemies gather, Cassius must grow faster than a child should — learning what it means to lead when there is no longer an empire to rely on, and discovering that the hardest fight is not against the invaders at the gates, but against despair within the walls.</p>
+          <p className="books-tag"><em>A coming-of-age historical epic about faith, fallout, and the cost of building something new from the ruins of Rome.</em></p>
+          <div className="books-cta">
+            <a className="btn btn-primary is-soon" href="#" onClick={(e)=>e.preventDefault()} aria-disabled="true">Read a sample <span className="soon">Coming soon</span></a>
+            <a className="btn btn-ghost is-soon" href="#" onClick={(e)=>e.preventDefault()} aria-disabled="true">Pre-order <span className="soon">Coming soon</span></a>
+          </div>
+        </div>
+        <div className="reveal book-cover-wrap">
+          <img className="book-cover" src="assets/paiuvaria-cover.jpg" alt="Paiuvaria — a Roman youth gazing over an alpine valley toward distant mountains and ruins" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ---------------- STUDIO ---------------- */
 function Studio() {
   const values = [
@@ -278,4 +309,4 @@ function Footer() {
   );
 }
 
-window.BM = { Nav, Hero, Teem, Films, Studio, Follow, Footer, useReveal, Hat, Star };
+window.BM = { Nav, Hero, Teem, Films, Books, Studio, Follow, Footer, useReveal, Hat, Star };
