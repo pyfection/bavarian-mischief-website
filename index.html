@@ -17,6 +17,7 @@
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
 
+<script src="i18n.js"></script>
 <script type="text/babel" src="life.jsx"></script>
 <script type="text/babel" src="sections.jsx"></script>
 
@@ -36,6 +37,8 @@ const ACCENTS = {
 
 function App() {
   const { Nav, Hero, Teem, Films, Books, Studio, Follow, Footer, useReveal } = window.BM;
+  const { LocaleContext, useLocale } = window.BM_I18N;
+  const locale = useLocale();
   useReveal();
 
   React.useEffect(() => {
@@ -51,7 +54,7 @@ function App() {
   const a = ACCENTS[TWEAKS.accent] || ACCENTS.green;
 
   return (
-    <React.Fragment>
+    <LocaleContext.Provider value={locale}>
       <Nav />
       <Hero variant={TWEAKS.heroVariant} />
       <Teem accent={a.accent} alt={TWEAKS.accent === "amber" ? "#6a9a4f" : "#e8a23a"} />
@@ -60,7 +63,7 @@ function App() {
       <Studio />
       <Follow />
       <Footer />
-    </React.Fragment>
+    </LocaleContext.Provider>
   );
 }
 

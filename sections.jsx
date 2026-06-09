@@ -1,5 +1,12 @@
 /* sections.jsx — page sections for Bavarian Mischief */
 
+const { useT, useLang, LOCALES } = window.BM_I18N;
+
+// Render a translated string that may contain inline HTML (<strong>, <em>, <b>, <br>, <span class="am">).
+// All _html strings come from i18n.js — never from user input.
+const Html = ({ as: As = "span", html, ...rest }) =>
+  React.createElement(As, { ...rest, dangerouslySetInnerHTML: { __html: html } });
+
 function useReveal() {
   /* Reveals are now handled by scroll-driven CSS (animation-timeline: view()).
      No JS needed — kept as a no-op so callers/exports stay stable. */
@@ -17,8 +24,31 @@ const Star = ({ s = 14 }) => (
   <svg width={s} height={s} viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1l1.8 8.2L22 12l-8.2 1.8L12 22l-1.8-8.2L2 12l8.2-1.8z" fill="currentColor"/></svg>
 );
 
+/* ---------------- LANG SWITCHER ---------------- */
+function LangSwitch() {
+  const [lang, setLang] = useLang();
+  return (
+    <div className="lang-switch" role="group" aria-label="Language">
+      {LOCALES.map((l, i) => (
+        <React.Fragment key={l.code}>
+          {i > 0 && <span className="lang-sep" aria-hidden="true">·</span>}
+          <button
+            type="button"
+            className={"lang-opt" + (l.code === lang ? " is-active" : "")}
+            aria-pressed={l.code === lang}
+            onClick={() => setLang(l.code)}
+          >
+            {l.label}
+          </button>
+        </React.Fragment>
+      ))}
+    </div>
+  );
+}
+
 /* ---------------- NAV ---------------- */
 function Nav() {
+  const t = useT();
   const [scrolled, setScrolled] = React.useState(false);
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -32,11 +62,12 @@ function Nav() {
         Bavarian <b>Mischief</b>
       </a>
       <div className="nav-links">
-        <a href="#teem">Games</a>
-        <a href="#films">Films</a>
-        <a href="#books">Books</a>
-        <a href="#studio">Studio</a>
-        <a className="navcta" href="#follow">Follow ✦</a>
+        <a href="#teem">{t("nav.games")}</a>
+        <a href="#films">{t("nav.films")}</a>
+        <a href="#books">{t("nav.books")}</a>
+        <a href="#studio">{t("nav.studio")}</a>
+        <a className="navcta" href="#follow">{t("nav.follow")}</a>
+        <LangSwitch />
       </div>
     </nav>
   );
@@ -44,6 +75,7 @@ function Nav() {
 
 /* ---------------- HERO ---------------- */
 function Hero({ variant }) {
+  const t = useT();
   return (
     <header className="hero" id="top" data-hv={variant} data-screen-label="Hero">
       <div className="glow"></div>
@@ -52,19 +84,19 @@ function Hero({ variant }) {
         <img className="hero-logo" src="assets/logo.png" alt="Bavarian Mischief — Indie Studio" />
         {variant !== "split" ? (
           <React.Fragment>
-            <p className="hero-sub">An indie studio from the foothills of Bavaria — making games, film and books for curious minds, with a streak of Bavarian mischief.</p>
+            <p className="hero-sub">{t("hero.sub")}</p>
             <div className="hero-cta">
-              <a className="btn btn-primary" href="#teem">▶ Play Teem</a>
-              <a className="btn btn-ghost" href="#films">See what's brewing</a>
+              <a className="btn btn-primary" href="#teem">{t("hero.ctaPlay")}</a>
+              <a className="btn btn-ghost" href="#films">{t("hero.ctaSee")}</a>
             </div>
           </React.Fragment>
         ) : (
           <div className="hero-side">
-            <div className="label">Now playing</div>
+            <div className="label">{t("hero.splitLabel")}</div>
             <h3 className="hand" style={{ fontSize: 52, color: "var(--cream)", margin: "6px 0 10px" }}>Teem</h3>
-            <p style={{ color: "var(--cream-dim)", fontSize: 16 }}>A living-cells strategy game for browser &amp; mobile. Grow colonies, outwit the grid.</p>
+            <p style={{ color: "var(--cream-dim)", fontSize: 16 }}>{t("hero.splitDesc")}</p>
             <div className="hero-cta" style={{ marginTop: 22 }}>
-              <a className="btn btn-primary" href="#teem">▶ Play free</a>
+              <a className="btn btn-primary" href="#teem">{t("hero.splitCta")}</a>
             </div>
           </div>
         )}
@@ -75,11 +107,9 @@ function Hero({ variant }) {
           <div className="track">
             {Array.from({ length: 2 }).map((_, i) => (
               <React.Fragment key={i}>
-                <span>✦ <b>Teem</b> — out now on browser &amp; mobile</span>
-                <span>✦ Animated Bavarian tales — <b>in the workshop</b></span>
-                <span>✦ Strategy games with a mischievous streak</span>
-                <span>✦ Bavarian storybooks — <b>in the workshop</b></span>
-                <span>✦ Made in the foothills, <b>with some Bavarian mischief</b></span>
+                {t("hero.ticker_html").map((line, j) => (
+                  <Html key={j} html={line} />
+                ))}
               </React.Fragment>
             ))}
           </div>
@@ -87,7 +117,7 @@ function Hero({ variant }) {
       )}
 
       <div className="hero-scroll">
-        <span>Scroll</span>
+        <span>{t("hero.scroll")}</span>
         <span className="arrow"></span>
       </div>
     </header>
@@ -96,27 +126,28 @@ function Hero({ variant }) {
 
 /* ---------------- TEEM ---------------- */
 function Teem({ accent, alt }) {
+  const t = useT();
   return (
     <section className="teem section-pad" id="teem" data-screen-label="Teem / Games">
       <div className="wrap teem-grid">
         <div className="reveal">
           <div className="teem-meta">
-            <span className="pill live">Live now</span>
-            <span className="pill">Browser</span>
-            <span className="pill">Mobile</span>
-            <span className="pill">Strategy</span>
+            <span className="pill live">{t("teem.pills.live")}</span>
+            <span className="pill">{t("teem.pills.browser")}</span>
+            <span className="pill">{t("teem.pills.mobile")}</span>
+            <span className="pill">{t("teem.pills.strategy")}</span>
           </div>
-          <div className="eyebrow">Our first game</div>
+          <div className="eyebrow">{t("teem.eyebrow")}</div>
           <h2 className="teem-title">Teem</h2>
-          <p className="teem-desc">A pocket-sized strategy game where you nurture colonies of living cells. Inspired by the maths of Conway's Game of Life — every move ripples outward, and the grid is always one breath from chaos.</p>
+          <p className="teem-desc">{t("teem.desc")}</p>
           <ul className="teem-feats">
-            <li><span className="b">◆</span> Plant, prune and steer self-organising cell colonies.</li>
-            <li><span className="b">◆</span> Daily puzzle boards &amp; an endless sandbox.</li>
-            <li><span className="b">◆</span> One-thumb friendly — play anywhere, no install.</li>
+            {t("teem.feats").map((f, i) => (
+              <li key={i}><span className="b">◆</span> {f}</li>
+            ))}
           </ul>
           <div className="teem-cta">
-            <a className="btn btn-primary" href="https://teem.bavarianmischief.com" target="_blank" rel="noopener">▶ Play in browser</a>
-            <a className="btn btn-green is-soon" href="#" onClick={(e)=>e.preventDefault()} aria-disabled="true">Get it on mobile <span className="soon">Coming soon</span></a>
+            <a className="btn btn-primary" href="https://teem.bavarianmischief.com" target="_blank" rel="noopener">{t("teem.ctaPlay")}</a>
+            <a className="btn btn-green is-soon" href="#" onClick={(e)=>e.preventDefault()} aria-disabled="true">{t("teem.ctaMobile")} <span className="soon">{t("teem.comingSoon")}</span></a>
           </div>
         </div>
         <div className="reveal">
@@ -129,36 +160,30 @@ function Teem({ accent, alt }) {
 
 /* ---------------- FILMS ---------------- */
 function Films() {
+  const t = useT();
+  const cards = t("films.cards");
   return (
     <section className="section-pad" id="films" data-screen-label="Films">
       <div className="wrap">
         <div className="section-head reveal">
-          <div className="eyebrow">In the workshop</div>
-          <h2 className="section-title">Tales told in <em>Bavarian</em> <span className="am">✦</span></h2>
-          <p className="section-lead">We're crafting short animated films for children — playful, warm-hearted stories told in the Bavarian language, keeping the soul of a people alive for the next generation.</p>
+          <div className="eyebrow">{t("films.eyebrow")}</div>
+          <Html as="h2" className="section-title" html={t("films.title_html")} />
+          <p className="section-lead">{t("films.lead")}</p>
         </div>
         <div className="films-grid">
           <a className="film-feature reveal" href="#follow" style={{ backgroundImage: "linear-gradient(to top, rgba(8,8,6,.94), rgba(8,8,6,.15) 58%, rgba(8,8,6,.05)), url('assets/beni.png')", backgroundSize: "cover", backgroundPosition: "center 18%" }}>
-            <span className="badge">Coming soon</span>
-            <h3>Da Beni</h3>
-            <p>Beni the marmot showing his world.</p>
+            <span className="badge">{t("films.featBadge")}</span>
+            <h3>{t("films.featTitle")}</h3>
+            <p>{t("films.featDesc")}</p>
           </a>
           <div className="film-side">
-            <div className="film-card reveal">
-              <div className="k">Series · ages 4–9</div>
-              <h4>Spoken in real Bavarian</h4>
-              <p>Authentic language, written and voiced with native speakers — so little ones learn the words their grandparents grew up with.</p>
-            </div>
-            <div className="film-card reveal">
-              <div className="k">Format</div>
-              <h4>Bite-sized episodes</h4>
-              <p>Hand-animated shorts, 4–6 minutes each. Built for bedtime, classrooms and curious afternoons.</p>
-            </div>
-            <div className="film-card reveal">
-              <div className="k">Want a preview?</div>
-              <h4>Join the workshop list</h4>
-              <p>We'll send the first clip and behind-the-scenes sketches before anyone else.</p>
-            </div>
+            {cards.map((c, i) => (
+              <div className="film-card reveal" key={i}>
+                <div className="k">{c.k}</div>
+                <h4>{c.h}</h4>
+                <p>{c.p}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -168,25 +193,26 @@ function Films() {
 
 /* ---------------- BOOKS ---------------- */
 function Books() {
+  const t = useT();
   return (
     <section className="books section-pad" id="books" data-screen-label="Books">
       <div className="wrap books-grid">
         <div className="reveal">
           <div className="books-meta">
-            <span className="pill">Historical fiction</span>
-            <span className="pill">Coming of age</span>
-            <span className="pill">476 AD</span>
+            <span className="pill">{t("books.pills.hist")}</span>
+            <span className="pill">{t("books.pills.coming")}</span>
+            <span className="pill">{t("books.pills.year")}</span>
           </div>
-          <div className="eyebrow">Our first book</div>
+          <div className="eyebrow">{t("books.eyebrow")}</div>
           <h2 className="books-title">Paiuvaria</h2>
-          <div className="books-byline">by Matthias Schreiber</div>
-          <p className="books-desc">The Western Roman Empire is breaking apart along the Danube frontier — where a crumbling fortress, shifting loyalties, and rumours of war make survival a daily bargain. Cassius is only a boy, but he's old enough to see that Rome's laws no longer reach its edges, and that faith — old and new — can unite a town or tear it in two.</p>
-          <p className="books-desc">When violence finally spills over, Cassius is swept from the only home he has ever known and thrust into a dangerous journey through borderlands ruled by hunger, politics, and the sword. Taken under the protection of Severinus, a wandering holy man with a startling reputation, Cassius is drawn into a struggle far larger than any battlefield: keeping frightened people alive, holding a community together as it fractures, and choosing mercy when fear demands cruelty.</p>
-          <p className="books-desc">As winter closes in and enemies gather, Cassius must grow faster than a child should — learning what it means to lead when there is no longer an empire to rely on, and discovering that the hardest fight is not against the invaders at the gates, but against despair within the walls.</p>
-          <p className="books-tag"><em>A coming-of-age historical epic about faith, fallout, and the cost of building something new from the ruins of Rome.</em></p>
+          <div className="books-byline">{t("books.byline")}</div>
+          {t("books.paras").map((p, i) => (
+            <p className="books-desc" key={i}>{p}</p>
+          ))}
+          <p className="books-tag"><em>{t("books.tag")}</em></p>
           <div className="books-cta">
-            <a className="btn btn-primary is-soon" href="#" onClick={(e)=>e.preventDefault()} aria-disabled="true">Read a sample <span className="soon">Coming soon</span></a>
-            <a className="btn btn-ghost is-soon" href="#" onClick={(e)=>e.preventDefault()} aria-disabled="true">Pre-order <span className="soon">Coming soon</span></a>
+            <a className="btn btn-primary is-soon" href="#" onClick={(e)=>e.preventDefault()} aria-disabled="true">{t("books.ctaSample")} <span className="soon">{t("books.comingSoon")}</span></a>
+            <a className="btn btn-ghost is-soon" href="#" onClick={(e)=>e.preventDefault()} aria-disabled="true">{t("books.ctaPreorder")} <span className="soon">{t("books.comingSoon")}</span></a>
           </div>
         </div>
         <div className="reveal book-cover-wrap">
@@ -199,20 +225,17 @@ function Books() {
 
 /* ---------------- STUDIO ---------------- */
 function Studio() {
-  const values = [
-    { ic: "◆", t: "Small & scrappy", d: "A tiny team that ships real things, not roadmaps." },
-    { ic: "✦", t: "Clever by design", d: "Simple rules, deep play — systems that surprise us too." },
-    { ic: "❋", t: "Rooted in place", d: "Made by Bavarians, flavoured with its language and folklore." },
-    { ic: "▲", t: "A little mischief", d: "If it doesn't make us grin, it doesn't ship." },
-  ];
+  const t = useT();
+  const icons = ["◆", "✦", "❋", "▲"];
+  const values = t("studio.values").map((v, i) => ({ ic: icons[i] || "✦", ...v }));
   return (
     <section className="studio section-pad" id="studio" data-screen-label="Studio">
       <div className="wrap studio-grid">
         <div className="studio-copy reveal">
-          <div className="eyebrow">The studio</div>
-          <h2 className="section-title">Made with some<br/><span className="am">Bavarian mischief</span></h2>
-          <p>We're a pint-sized independent studio making <strong>strategy games</strong>, <strong>animated films</strong> and <strong>storybooks</strong> from the foothills of the Alps. We like ideas that look simple on the surface and unfold into something deeper the longer you stay.</p>
-          <p>Games are where we play with systems; films and books are where we tell them. All three carry the same streak of <strong>warm, curious mischief</strong> — and a soft spot for the place and the language we come from.</p>
+          <div className="eyebrow">{t("studio.eyebrow")}</div>
+          <Html as="h2" className="section-title" html={t("studio.title_html")} />
+          <Html as="p" html={t("studio.para1_html")} />
+          <Html as="p" html={t("studio.para2_html")} />
           <div className="values">
             {values.map((v) => (
               <div className="value" key={v.t}>
@@ -225,7 +248,7 @@ function Studio() {
         </div>
         <div className="reveal">
           <div className="studio-art">
-            <span className="placeholder-note">studio / team photo</span>
+            <span className="placeholder-note">{t("studio.placeholder")}</span>
           </div>
         </div>
       </div>
@@ -238,6 +261,7 @@ function Studio() {
 const SIGNUP_URL = "https://bavarian-mischief-signup.antextides.workers.dev";
 
 function Follow() {
+  const t = useT();
   const [email, setEmail] = React.useState("");
   const [done, setDone] = React.useState(false);
   const [err, setErr] = React.useState(false);
@@ -263,28 +287,28 @@ function Follow() {
   return (
     <section className="follow section-pad" id="follow" data-screen-label="Follow">
       <div className="wrap" style={{ maxWidth: 720 }}>
-        <div className="eyebrow solo" style={{ justifyContent: "center", display: "flex" }}>Stay in the loop</div>
-        <h2 className="section-title" style={{ textAlign: "center", marginTop: 14 }}>Get the first look <span className="am">✦</span></h2>
-        <p className="section-lead" style={{ margin: "16px auto 0", textAlign: "center" }}>New game updates, film previews, book sneak-peeks and the odd behind-the-scenes sketch. No spam — just mischief.</p>
+        <div className="eyebrow solo" style={{ justifyContent: "center", display: "flex" }}>{t("follow.eyebrow")}</div>
+        <Html as="h2" className="section-title" style={{ textAlign: "center", marginTop: 14 }} html={t("follow.title_html")} />
+        <p className="section-lead" style={{ margin: "16px auto 0", textAlign: "center" }}>{t("follow.lead")}</p>
         {!done ? (
           <form className="form" onSubmit={submit}>
             <input
               className={err ? "err" : ""}
-              type="email" placeholder="you@example.com"
+              type="email" placeholder={t("follow.placeholder")}
               value={email} onChange={(e) => { setEmail(e.target.value); setErr(false); }}
               disabled={busy}
             />
             <button className="btn btn-primary" type="submit" disabled={busy}>
-              {busy ? "Sending…" : "Sign me up"}
+              {busy ? t("follow.sending") : t("follow.send")}
             </button>
           </form>
         ) : (
-          <div className="ok">✓ You're on the list. Servus &amp; welcome!</div>
+          <div className="ok">{t("follow.ok")}</div>
         )}
         <div className="socials">
-          <a className="soc" href="#" onClick={(e)=>e.preventDefault()}>Steam <span className="soon">Coming soon</span></a>
-          <a className="soc" href="#" onClick={(e)=>e.preventDefault()}>YouTube <span className="soon">Coming soon</span></a>
-          <a className="soc" href="#" onClick={(e)=>e.preventDefault()}>Discord <span className="soon">Coming soon</span></a>
+          <a className="soc" href="#" onClick={(e)=>e.preventDefault()}>{t("follow.socials.steam")} <span className="soon">{t("follow.comingSoon")}</span></a>
+          <a className="soc" href="#" onClick={(e)=>e.preventDefault()}>{t("follow.socials.youtube")} <span className="soon">{t("follow.comingSoon")}</span></a>
+          <a className="soc" href="#" onClick={(e)=>e.preventDefault()}>{t("follow.socials.discord")} <span className="soon">{t("follow.comingSoon")}</span></a>
         </div>
       </div>
     </section>
@@ -293,6 +317,7 @@ function Follow() {
 
 /* ---------------- FOOTER ---------------- */
 function Footer() {
+  const t = useT();
   return (
     <footer className="foot">
       <div className="wrap">
@@ -301,8 +326,8 @@ function Footer() {
         </div>
         <div className="foot-grid">
           <div className="brand">Bavarian <b>Mischief</b></div>
-          <small>© 2026 Bavarian Mischief</small>
-          <small className="madewith">made with some mischief ✦</small>
+          <small>{t("footer.copyright")}</small>
+          <small className="madewith">{t("footer.made")}</small>
         </div>
       </div>
     </footer>
