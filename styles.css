@@ -154,6 +154,13 @@ a { color: inherit; text-decoration: none; }
   box-shadow: 0 6px 0 #233a1d, 0 14px 26px rgba(0,0,0,.35);
 }
 .btn-green:hover { transform: translateY(-2px); background: var(--green); }
+.btn.is-soon { opacity: .72; cursor: not-allowed; gap: 10px; }
+.btn.is-soon:hover { transform: none; background: var(--green-deep); }
+.btn.is-soon .soon {
+  font-size: 10px; letter-spacing: .12em; color: var(--ink);
+  background: color-mix(in srgb, var(--amber) 85%, transparent);
+  padding: 3px 7px; border-radius: 999px; text-transform: uppercase;
+}
 
 /* =====================================================================
    NAV

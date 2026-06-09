@@ -114,7 +114,7 @@ function Teem({ accent, alt }) {
           </ul>
           <div className="teem-cta">
             <a className="btn btn-primary" href="https://teem.bavarianmischief.com" target="_blank" rel="noopener">▶ Play in browser</a>
-            <a className="btn btn-green" href="#" onClick={(e)=>e.preventDefault()}>Get it on mobile</a>
+            <a className="btn btn-green is-soon" href="#" onClick={(e)=>e.preventDefault()} aria-disabled="true">Get it on mobile <span className="soon">Coming soon</span></a>
           </div>
         </div>
         <div className="reveal">
