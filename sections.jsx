@@ -201,14 +201,31 @@ function Studio() {
 }
 
 /* ---------------- FOLLOW ---------------- */
+// Update this after `wrangler deploy` — see worker/README.md
+const SIGNUP_URL = "https://bavarian-mischief-signup.pyfection.workers.dev";
+
 function Follow() {
   const [email, setEmail] = React.useState("");
   const [done, setDone] = React.useState(false);
   const [err, setErr] = React.useState(false);
-  const submit = (e) => {
+  const [busy, setBusy] = React.useState(false);
+  const submit = async (e) => {
     e.preventDefault();
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { setErr(true); return; }
-    setErr(false); setDone(true);
+    setErr(false); setBusy(true);
+    try {
+      const r = await fetch(SIGNUP_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      if (!r.ok) throw new Error("server");
+      setDone(true);
+    } catch {
+      setErr(true);
+    } finally {
+      setBusy(false);
+    }
   };
   return (
     <section className="follow section-pad" id="follow" data-screen-label="Follow">
@@ -222,8 +239,11 @@ function Follow() {
               className={err ? "err" : ""}
               type="email" placeholder="you@example.com"
               value={email} onChange={(e) => { setEmail(e.target.value); setErr(false); }}
+              disabled={busy}
             />
-            <button className="btn btn-primary" type="submit">Sign me up</button>
+            <button className="btn btn-primary" type="submit" disabled={busy}>
+              {busy ? "Sending…" : "Sign me up"}
+            </button>
           </form>
         ) : (
           <div className="ok">✓ You're on the list. Servus &amp; welcome!</div>

@@ -1,0 +1,12 @@
+name = "bavarian-mischief-signup"
+main = "src/index.js"
+compatibility_date = "2026-06-01"
+
+[vars]
+ALLOWED_ORIGINS = "https://bavarianmischief.com,https://www.bavarianmischief.com,http://localhost:8000"
+
+# Fill database_id after running:  npx wrangler d1 create bavarian-mischief-signups
+[[d1_databases]]
+binding = "DB"
+database_name = "bavarian-mischief-signups"
+database_id = "REPLACE_WITH_DATABASE_ID"

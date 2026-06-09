@@ -6,6 +6,11 @@ uploads/
 # editor-only scaffold (not loaded by index.html)
 tweaks-panel.jsx
 
+# worker tooling
+worker/node_modules/
+worker/.wrangler/
+worker/.dev.vars
+
 # OS / editor junk
 .DS_Store
 Thumbs.db
