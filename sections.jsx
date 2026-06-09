@@ -113,7 +113,7 @@ function Teem({ accent, alt }) {
             <li><span className="b">◆</span> One-thumb friendly — play anywhere, no install.</li>
           </ul>
           <div className="teem-cta">
-            <a className="btn btn-primary" href="#" onClick={(e)=>e.preventDefault()}>▶ Play in browser</a>
+            <a className="btn btn-primary" href="https://teem.bavarianmischief.com" target="_blank" rel="noopener">▶ Play in browser</a>
             <a className="btn btn-green" href="#" onClick={(e)=>e.preventDefault()}>Get it on mobile</a>
           </div>
         </div>
