@@ -196,6 +196,8 @@ a { color: inherit; text-decoration: none; }
 }
 .nav-links a:hover { color: var(--cream); background: var(--ink-3); }
 .nav-links .navcta { color: var(--amber); }
+.nav-links a.is-soon { opacity: .45; cursor: not-allowed; }
+.nav-links a.is-soon:hover { color: var(--cream-dim); background: transparent; }
 .nav-burger { display: none; }
 
 @media (max-width: 760px) {

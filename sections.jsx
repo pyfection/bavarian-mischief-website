@@ -34,6 +34,7 @@ function Nav() {
       <div className="nav-links">
         <a href="#teem">Games</a>
         <a href="#films">Films</a>
+        <a href="#" className="is-soon" onClick={(e)=>e.preventDefault()} aria-disabled="true" title="Coming soon">Books</a>
         <a href="#studio">Studio</a>
         <a className="navcta" href="#follow">Follow ✦</a>
       </div>
@@ -48,10 +49,10 @@ function Hero({ variant }) {
       <div className="glow"></div>
       {variant === "stage" && <div className="hero-stage-floor"></div>}
       <div className="hero-inner">
-        <img className="hero-logo" src="assets/logo.png" alt="Bavarian Mischief — Game Studio" />
+        <img className="hero-logo" src="assets/logo.png" alt="Bavarian Mischief — Indie Studio" />
         {variant !== "split" ? (
           <React.Fragment>
-            <p className="hero-sub">An indie game &amp; film studio from the foothills of Bavaria — building clever little strategy worlds and animated tales for curious minds.</p>
+            <p className="hero-sub">An indie studio from the foothills of Bavaria — making games, film and books for curious minds, with a streak of Bavarian mischief.</p>
             <div className="hero-cta">
               <a className="btn btn-primary" href="#teem">▶ Play Teem</a>
               <a className="btn btn-ghost" href="#films">See what's brewing</a>
@@ -77,6 +78,7 @@ function Hero({ variant }) {
                 <span>✦ <b>Teem</b> — out now on browser &amp; mobile</span>
                 <span>✦ Animated Bavarian tales — <b>in the workshop</b></span>
                 <span>✦ Strategy games with a mischievous streak</span>
+                <span>✦ Bavarian storybooks — <b>in the workshop</b></span>
                 <span>✦ Made in the foothills, <b>with some Bavarian mischief</b></span>
               </React.Fragment>
             ))}
@@ -178,8 +180,8 @@ function Studio() {
         <div className="studio-copy reveal">
           <div className="eyebrow">The studio</div>
           <h2 className="section-title">Made with some<br/><span className="am">Bavarian mischief</span></h2>
-          <p>We're a pint-sized independent studio making <strong>strategy games</strong> and <strong>animated films</strong> from the foothills of the Alps. We like ideas that look simple on the surface and unfold into something deeper the longer you stay.</p>
-          <p>Games are where we play with systems; film is where we tell stories. Both carry the same streak of <strong>warm, curious mischief</strong> — and a soft spot for the place and the language we come from.</p>
+          <p>We're a pint-sized independent studio making <strong>strategy games</strong>, <strong>animated films</strong> and <strong>storybooks</strong> from the foothills of the Alps. We like ideas that look simple on the surface and unfold into something deeper the longer you stay.</p>
+          <p>Games are where we play with systems; films and books are where we tell them. All three carry the same streak of <strong>warm, curious mischief</strong> — and a soft spot for the place and the language we come from.</p>
           <div className="values">
             {values.map((v) => (
               <div className="value" key={v.t}>
@@ -232,7 +234,7 @@ function Follow() {
       <div className="wrap" style={{ maxWidth: 720 }}>
         <div className="eyebrow solo" style={{ justifyContent: "center", display: "flex" }}>Stay in the loop</div>
         <h2 className="section-title" style={{ textAlign: "center", marginTop: 14 }}>Get the first look <span className="am">✦</span></h2>
-        <p className="section-lead" style={{ margin: "16px auto 0", textAlign: "center" }}>New game updates, film previews and the odd behind-the-scenes sketch. No spam — just mischief.</p>
+        <p className="section-lead" style={{ margin: "16px auto 0", textAlign: "center" }}>New game updates, film previews, book sneak-peeks and the odd behind-the-scenes sketch. No spam — just mischief.</p>
         {!done ? (
           <form className="form" onSubmit={submit}>
             <input
@@ -268,7 +270,7 @@ function Footer() {
         </div>
         <div className="foot-grid">
           <div className="brand">Bavarian <b>Mischief</b></div>
-          <small>© 2026 Bavarian Mischief Game Studio</small>
+          <small>© 2026 Bavarian Mischief</small>
           <small className="madewith">made with some mischief ✦</small>
         </div>
       </div>
