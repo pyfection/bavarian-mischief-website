@@ -202,7 +202,7 @@ function Studio() {
 
 /* ---------------- FOLLOW ---------------- */
 // Update this after `wrangler deploy` — see worker/README.md
-const SIGNUP_URL = "https://bavarian-mischief-signup.pyfection.workers.dev";
+const SIGNUP_URL = "https://bavarian-mischief-signup.antextides.workers.dev";
 
 function Follow() {
   const [email, setEmail] = React.useState("");

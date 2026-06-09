@@ -9,4 +9,4 @@ ALLOWED_ORIGINS = "https://bavarianmischief.com,https://www.bavarianmischief.com
 [[d1_databases]]
 binding = "DB"
 database_name = "bavarian-mischief-signups"
-database_id = "REPLACE_WITH_DATABASE_ID"
+database_id = "30932caf-718b-4fd3-b2fd-9b27e1925569"
