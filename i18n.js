@@ -310,6 +310,19 @@
         ctaMobile: "Af's hendi hoin",
         comingSoon: "Kumd bóid",
       },
+      films: {
+        eyebrow: "In da veakcdód",
+        title_html: "Gcihdn af <em>Boaric</em> <span class=\"am\">✦</span>",
+        lead: "Mia máha kuatse animiade fuim fia kinda — facbuide, heatsveamada gcihdn af boaric, damid de sei fo am foik fia de negsde genaradsion lebendig blaibd.",
+        featBadge: "Kumd bóid",
+        featTitle: "Da Beni",
+        featDesc: "Da murme Beni dsoagd sei veit.",
+        cards: [
+          { k: "Serie 4–9 iór", h: "Ehds Boaric gret", p: "Ehde cbráh, gcrim und gret fo am muatacbráhla — damid de gloana de veata leanea, mid dene eane grouseitan grous voan san." },
+          { k: "Foamad", h: "Dutal lánge fuim", p: "Hándgmáhde kuadsfuim, ié 4–6 minutn. Gmáhd fia's bet, fia's glasndsima und fia naigiarige námidóg." },
+          { k: "Mógs'd a foacau?", h: "Dróg di in da veakcdódlisdn ei", p: "Mia cikma da as easte cnipsal und skitsn aus da veakcdód foaraus — foa óle ándan." },
+        ],
+      },
     },
   };
 
