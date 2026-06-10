@@ -248,7 +248,7 @@ function Studio() {
         </div>
         <div className="reveal">
           <div className="studio-art">
-            <span className="placeholder-note">{t("studio.placeholder")}</span>
+            <img className="studio-photo" src="assets/studio.jpg" alt="A Bavarian alpine scene at dusk — wooden signpost reading Cbuin · Fadsein · Vundan · Kim eina, with a feathered hat in the foreground and a cabin flying the Bavarian flag" />
           </div>
         </div>
       </div>
