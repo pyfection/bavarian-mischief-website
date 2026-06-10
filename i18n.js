@@ -319,9 +319,23 @@
         featDesc: "Da murme Beni dsoagd sei veit.",
         cards: [
           { k: "Serie 4–9 iór", h: "Ehds Boaric gret", p: "Ehde cbráh, gcrim und gret fo am muatacbráhla — damid de gloana de veata leanea, mid dene eane grouseitan grous voan san." },
-          { k: "Foamad", h: "Dutal lánge fuim", p: "Hándgmáhde kuadsfuim, ié 4–6 minutn. Gmáhd fia's bet, fia's glasndsima und fia naigiarige námidóg." },
+          { k: "Foamad", h: "Dutal lánge fuim", p: "Hándgmáhde kuatsfuim, ié 4–6 minutn. Gmáhd fia's bet, fia's glasndsima und fia naigiarige námidóg." },
           { k: "Mógs'd a foacau?", h: "Dróg di in da veakcdódlisdn ei", p: "Mia cikma da as easte cnipsal und skitsn aus da veakcdód foaraus — foa óle ándan." },
         ],
+      },
+      books: {
+        pills: { hist: "Historica romaan", coming: "Eaváksn vean", year: "476 n. Kr." },
+        eyebrow: "Unsa easds buah",
+        byline: "fo Matthias Schreiber",
+        paras: [
+          "As Vestrémice Raih brihd ausanánd an da Donaugrents — fo a tsámfoinde festung, vegslnde trai und gcvats fom griag máha as lém cvar an iédn dóg. Da Cassius is no a bua, áva óid gnua um dsum séng, das Rom sei gseds nima bis af seine grentsn raihd, und das da glaum — oid und nai — a doaf ainigd oda ausanánda raisn ko.",
+          "Ven de gvóid endlih ivakohd, vead da Cassius as'm oandsign dahoam grisn, vo ea ié kend hód, und in a gfarlihe roas duah's grentslánd gcmisn — vo hunga, politick und cveata heacn. Unta'n cuts fom Severinus, an vándandn hailign mit am vundasáman ruaf, vead da Cassius in an kámpf eitsong, dea greisa is óis iéds cláhdfeid: facrekte laid am lém hóitn, a gmoacáfd dsámahóitn, ven's asandándabrihd, und de gnad vein, ven de fuahd náh grausamkait ruaft.",
+          "Ven da vintta kumd und de feint si sámen, muas da Cassius cneia grous vean ois a kind soit — leana, vós fian hoasd, ven's koa raih mea gibd, af des ma si falásn ko, und sigd, das da heatasde kámpf ned gégan eidringling foa te toa is, sundan gágan de fadsvaiflung in de mauan.",
+        ],
+        tag: "A historica romaan iba's eaváksn vean — iba an glaum, de ceam, un an brais fo de trima fo Rom vás nais af dsum baun.",
+        ctaSample: "Lis a ctikal",
+        ctaPreorder: "Bcdei foa",
+        comingSoon: "Kumd bóid",
       },
     },
   };
