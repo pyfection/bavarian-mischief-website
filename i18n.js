@@ -284,7 +284,7 @@
       doc: { title: "Bavarian Mischief — Indie Studio" },
       nav: { games: "Cbui", films: "Fuim", books: "Biaha", studio: "Cdudio", follow: "Kim mid ✦" },
       hero: {
-        sub: "A indi cdudio aus de Boaricn foaóipm — mia máha cbui, fuim und biaha fia de naigiarign, mit a bisal a Boaricn gcpas.",
+        sub: "A indi cdudio aus de Boaricn foaóipm — mia máha cbui, fuim und biaha fia de naigiarign, mit a bisal an Boaricn gcpas.",
         ctaPlay: "▶ Cbui Teem",
         ctaSee: "Cau vós brodld",
         splitLabel: "Iadsa dsum cbuin",
@@ -341,7 +341,7 @@
       },
       studio: {
         eyebrow: "As cdudio",
-        title_html: "Gmáhd mid a bisal a<br/><span class=\"am\">Boaricn gcpas</span>",
+        title_html: "Gmáhd mid a bisal an<br/><span class=\"am\">Boaricn gcpas</span>",
         para1_html: "Mia han a gloans, unábhéngigs cdudio aus de foaóipm und máha <strong>ctrategicbui</strong>, <strong>animiade fuim</strong> und <strong>romaane</strong>. Mia mégn iden, de af'm eastn blik oafáh ascaugn und um so lenga ma blaibd, desto diafa veans.",
         para2_html: "Mia máhma cbui mid sistem, fuim mid heats und biaha mid laidncáfd. Óle drai drógn de glaihe cbua fo <strong>váma, naigiarign gcpas</strong> — und a voahs flékal fia den blóds und de cbráh vo mia hea kema.",
         values: [
