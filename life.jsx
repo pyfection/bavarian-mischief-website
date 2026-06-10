@@ -58,6 +58,7 @@ function seedPattern(cols, rows) {
 }
 
 function LifeBoard({ accent, alt }) {
+  const t = window.BM_I18N.useT();
   const COLS = 34, ROWS = 34;
   const { grid, setGrid, gen, setGen, step } = useLife(COLS, ROWS);
   const [running, setRunning] = React.useState(true);
@@ -168,17 +169,17 @@ function LifeBoard({ accent, alt }) {
         />
       </div>
       <div className="life-bar">
-        <div className="life-stats">GEN <b>{String(gen).padStart(3,"0")}</b> · ALIVE <b>{String(alive).padStart(3,"0")}</b></div>
+        <div className="life-stats">{t("life.gen")} <b>{String(gen).padStart(3,"0")}</b> · {t("life.alive")} <b>{String(alive).padStart(3,"0")}</b></div>
         <div className="life-controls">
-          <button className={"icon-btn" + (running ? " on" : "")} onClick={() => setRunning(r => !r)}>{running ? "❚❚ Pause" : "▶ Run"}</button>
+          <button className={"icon-btn" + (running ? " on" : "")} onClick={() => setRunning(r => !r)}>{running ? t("life.pause") : t("life.run")}</button>
           <button className="icon-btn" onClick={() => setSpeed(s => s === 110 ? 50 : s === 50 ? 230 : 110)}>
-            {speed === 50 ? "Fast" : speed === 230 ? "Slow" : "1×"}
+            {speed === 50 ? t("life.speedFast") : speed === 230 ? t("life.speedSlow") : t("life.speedNormal")}
           </button>
-          <button className="icon-btn" onClick={reseed}>Reseed</button>
-          <button className="icon-btn" onClick={clear}>Clear</button>
+          <button className="icon-btn" onClick={reseed}>{t("life.reseed")}</button>
+          <button className="icon-btn" onClick={clear}>{t("life.clear")}</button>
         </div>
       </div>
-      <div className="life-hint">↑ click &amp; drag the board to plant your own little colonies</div>
+      <div className="life-hint">{t("life.hint")}</div>
     </div>
   );
 }
